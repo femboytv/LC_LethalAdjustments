@@ -37,7 +37,7 @@ namespace LethalAdjustments
 
             ScrapAmountFile = new ConfigFile(Paths.ConfigPath + "\\LethalAdjustments\\ScrapAmount.cfg", true);
             ScrapAmountMultiplier = ScrapAmountFile.Bind("ScrapAmount", "Multiplier", 1f, "Multiplier of the amount of scrap spawned");
-            
+
             ScrapValueFile = new ConfigFile(Paths.ConfigPath + "\\LethalAdjustments\\ScrapValue.cfg", true);
             ScrapValueMultiplier = ScrapValueFile.Bind("ScrapValue", "Multiplier", 1f, "Multiplier of the value of scrap spawned");
         }
@@ -57,11 +57,11 @@ namespace LethalAdjustments
         [HarmonyPostfix]
         private static void AwakePatch()
         {
-            Logger.LogInfo("Patching mapSizeMultiplier with {Config.MapSizeMultiplier.Value} in RoundManager");
+            Logger.LogInfo($"RoundManager: mapSizeMultiplier = {Config.MapSizeMultiplier.Value}");
             RoundManager.Instance.mapSizeMultiplier = Config.MapSizeMultiplier.Value;
-            Logger.LogInfo("Patching scrapAmountMultiplier with {Config.ScrapAmountMultiplier.Value} in RoundManager");
+            Logger.LogInfo($"RoundManager: scrapAmountMultiplier = {Config.ScrapAmountMultiplier.Value}");
             RoundManager.Instance.scrapAmountMultiplier = Config.ScrapAmountMultiplier.Value;
-            Logger.LogInfo("Patching scrapValueMultiplier with {Config.ScrapValueMultiplier.Value} in RoundManager");
+            Logger.LogInfo($"RoundManager: scrapValueMultiplier = {Config.ScrapValueMultiplier.Value}");
             RoundManager.Instance.scrapValueMultiplier = Config.ScrapValueMultiplier.Value;
         }
     }
